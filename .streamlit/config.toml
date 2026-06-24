@@ -1,0 +1,12 @@
+[server]
+port = 8503
+headless = true
+address = "127.0.0.1"
+enableCORS = false
+enableXsrfProtection = true
+
+[browser]
+gatherUsageStats = false
+
+[theme]
+base = "dark"
