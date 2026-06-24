@@ -1,0 +1,11 @@
+[Unit]
+Description=Vol shield git pull and service restart
+After=network-online.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=/root/quant/vol-shield
+ExecStart=/root/quant/vol-shield/scripts/vps-deploy.sh
+
+[Install]
+WantedBy=multi-user.target

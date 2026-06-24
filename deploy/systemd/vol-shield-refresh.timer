@@ -1,0 +1,11 @@
+[Unit]
+Description=Vol shield refresh (Mon-Fri 3x daily UTC)
+
+[Timer]
+OnCalendar=Mon..Fri *-*-* 07:30:00 UTC
+OnCalendar=Mon..Fri *-*-* 12:30:00 UTC
+OnCalendar=Mon..Fri *-*-* 21:00:00 UTC
+Persistent=true
+
+[Install]
+WantedBy=timers.target

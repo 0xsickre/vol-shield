@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "vol-shield"
+version = "0.1.0"
+description = "Volatility and cross-asset stress shield — VIX/OVX/MOVE/DXY gate publisher"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+  "pandas>=2.0,<3",
+  "numpy>=1.26",
+  "yfinance>=0.2",
+  "requests>=2.31",
+  "streamlit>=1.30",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "ruff>=0.4"]
+
+[project.scripts]
+vol-shield-refresh = "vol_shield.cli.refresh_prices:main"
+vol-shield-signal = "vol_shield.cli.run_shield_signal:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["vol_shield*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"

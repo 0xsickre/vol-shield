@@ -1,0 +1,15 @@
+[Unit]
+Description=Vol shield Streamlit dashboard
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/root/quant/vol-shield
+EnvironmentFile=/root/quant/vol-shield/.env
+ExecStart=/root/quant/vol-shield/.venv/bin/streamlit run app.py --server.port 8503 --server.address 127.0.0.1
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
