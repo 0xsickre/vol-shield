@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from datetime import timedelta
+
 import pandas as pd
 from typing import Dict, Optional, Tuple
 
@@ -54,8 +56,8 @@ def _live_close_series(sym: str, asof_date=None) -> pd.Series:
         if pd.notna(asof_ts):
             if getattr(asof_ts, "tzinfo", None) is not None:
                 asof_ts = asof_ts.tz_convert(None)
-            end_dt = asof_ts + pd.Timedelta(days=1)
-            start_dt = asof_ts - pd.Timedelta(days=60)
+            end_dt = asof_ts + timedelta(days=1)
+            start_dt = asof_ts - timedelta(days=60)
             return history_close_series(sym, start=start_dt, end=end_dt, interval="1d")
     return history_close_series(sym, period="60d", interval="1d")
 

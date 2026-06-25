@@ -1,7 +1,7 @@
 """Business-day gap and bar staleness primitives (shared, no domain I/O)."""
 from __future__ import annotations
 
-from datetime import datetime
+from datetime import datetime, timedelta
 
 import numpy as np
 import pandas as pd
@@ -39,8 +39,8 @@ def business_day_gap(bar_date: object, ref_date: object) -> int:
     if r.date() <= b.date():
         return 0
     try:
-        start = (b + pd.Timedelta(days=1)).strftime("%Y-%m-%d")
-        end_excl = (r + pd.Timedelta(days=1)).strftime("%Y-%m-%d")
+        start = (b + timedelta(days=1)).strftime("%Y-%m-%d")
+        end_excl = (r + timedelta(days=1)).strftime("%Y-%m-%d")
         return int(np.busday_count(start, end_excl))
     except Exception:
         return 999

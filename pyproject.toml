@@ -30,6 +30,7 @@ include = ["vol_shield*"]
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 pythonpath = ["."]
+markers = ["stress: golden market scenario tests"]
 
 [tool.ruff]
 line-length = 100
