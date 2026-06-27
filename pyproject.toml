@@ -14,6 +14,7 @@ dependencies = [
   "yfinance>=0.2",
   "requests>=2.31",
   "streamlit>=1.30",
+  "quant-shared @ git+https://github.com/0xsickre/quant-shared.git",
 ]
 
 [project.optional-dependencies]

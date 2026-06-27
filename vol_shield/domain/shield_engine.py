@@ -189,7 +189,7 @@ def get_global_shield_status(asof_date=None, yahoo_fence: Optional[str] = None):
             move_val is not None and float(move_curr) > float(BOND_LIQUIDITY_MOVE_THRESHOLD)
         )
 
-        shield_on = any([vix_shock, ovx_shock, dxy_trend == "BULLISH", bond_liquidity_shock])
+        shield_on = any([vix_shock, ovx_shock, bond_liquidity_shock])
 
         return {
             "VIX_Shock": vix_shock,
