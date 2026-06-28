@@ -4,12 +4,18 @@ After=network.target
 
 [Service]
 Type=simple
-User=root
+User=quant
+Group=quant
 WorkingDirectory=/root/quant/vol-shield
 EnvironmentFile=/root/quant/vol-shield/.env
 ExecStart=/root/quant/vol-shield/.venv/bin/streamlit run app.py
 Restart=always
 RestartSec=5
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=read-only
+ReadWritePaths=/root/quant/vol-shield /var/lib/vol-shield
 
 [Install]
 WantedBy=multi-user.target

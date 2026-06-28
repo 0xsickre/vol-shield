@@ -5,11 +5,17 @@ Wants=network-online.target
 
 [Service]
 Type=oneshot
-User=root
+User=quant
+Group=quant
 WorkingDirectory=/root/quant/vol-shield
 EnvironmentFile=/root/quant/vol-shield/.env
 Environment=VOL_SHIELD_CACHE_BACKEND=inprocess
 ExecStart=/bin/bash -c '/root/quant/vol-shield/.venv/bin/vol-shield-refresh && /root/quant/vol-shield/.venv/bin/vol-shield-signal --out /var/lib/vol-shield/snapshots/latest.json --persist'
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=read-only
+ReadWritePaths=/root/quant/vol-shield /var/lib/vol-shield
 
 [Install]
 WantedBy=multi-user.target
